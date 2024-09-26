@@ -1,3 +1,13 @@
+# Tech Stack:
+![image](https://img.shields.io/badge/Python-FFD43B?style=for-the-badge&logo=python&logoColor=blue)
+![image](https://img.shields.io/badge/Kaggle-035a7d?style=for-the-badge&logo=kaggle&logoColor=white)
+![image](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)\
+![image](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+![image](https://img.shields.io/badge/Keras-D00000?style=for-the-badge&logo=Keras&logoColor=white)
+![image](https://img.shields.io/badge/Numpy-777BB4?style=for-the-badge&logo=numpy&logoColor=white)
+![image](https://img.shields.io/badge/Pandas-2C2D72?style=for-the-badge&logo=pandas&logoColor=white)
+![image](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black)
+
 # Algorytmy sztucznej inteligencji do automatycznego usuwania czaszki z obrazów MRI T1-zależnych
 Praca magisterska - **Bartosz Pragacz**.
 
@@ -5,14 +15,14 @@ Wydział Matematyki i Informatyki na Uniwersytecie Mikołaja Kopernika w Toruniu
 
 Projekt jest licencjonowany na zasadach [MIT License](https://github.com/Bartek46/Praca_magisterska/blob/main/LICENSE).
 
-## Użycie
-Plik `Trening_U_Net_3D_.ipynb` pozwala przeprowadzić szkolenie modeli, zawiera architekturę modelu, przygotowanie danych oraz proces uczenia.
+## Pliki
+`Trening_U_Net_3D_.ipynb` pozwala przeprowadzić szkolenie modeli, zawiera architekturę modelu, przygotowanie danych oraz proces uczenia.
 
-Plik `Predykcja_U_Net_3D.ipynb` służy do przeprowadzenia predykcji, pozwala porównać maskę mózgu z predykcji z oryginalną maską.
+`Predykcja_U_Net_3D.ipynb` służy do przeprowadzenia predykcji, pozwala porównać maskę mózgu uzyskaną z predykcji z oryginalną maską.
 
-Plik `Szczegolowe_wyniki.xlsx` zawiera wartości macierzy pomyłek (TP, FP, FN TN) oraz metryk dla każdego skanu w podziale na modele.
+`Szczegolowe_wyniki.xlsx` zawiera wartości macierzy pomyłek (TP, FP, FN TN) oraz metryk dla każdego skanu w podziale na modele.
 
-Plik `NFBS_test_stats.csv` zawiera wynik metryk z artykułu naukowego (wyjaśnienie na dole).
+`NFBS_test_stats.csv` zawiera wynik metryk z artykułu naukowego (wyjaśnienie na dole).
 
 Wagi modeli z uwagi na swój rozmiar znajdują się na [dysku Google](https://drive.google.com/drive/folders/1MXlrCcy5mtmkSDpyKm77uWePz4GvoqGH?usp=sharing), folder `Modele` należy umieścić w tym samym miejscu co pliki z kodem.
 
@@ -22,17 +32,17 @@ Natomiast sprzęt osobisty zazwyczaj nie jest wystarczający, dlatego powinno si
 Kod nie został przygotowany w tym celu zatem nie można wczytywać wybranych plików, jedynie określoną liczbę pierwszych plików. Dlatego chcąc wczytać np. trzynasty skan zbioru testowego należy wczytać co najmniej trzynaście skanów. 
 
 ## Architektura modelu
-Model stworzono w oparciu o architekturę  U-Net. Składa się z 25,9 mln parametrów. 
+Model stworzono w oparciu o architekturę  `U-Net`. Składa się z 25,9 mln parametrów. 
 
 <img src="https://github.com/user-attachments/assets/022db2d4-bccb-43a5-98e7-98e62221f498" alt="Opis obrazu" width="800"/>
 
 ## Wyniki
 Przetworzenie całego skanu w jednej iteracji wymagało zbyt wiele pamięci, w tym celu podzielono skany wzdłuż osi `strzałkowej` na 6 części.\
-Z 90 skanów z podzbioru uczącego otrzymano 540 częsci.
+Z 90 skanów z podzbioru uczącego otrzymano 540 części.
 
 <img src="https://github.com/user-attachments/assets/71df8a4c-eb4f-4f9d-93e1-2e4a1349c429" alt="Opis obrazu" width="600"/>
 
-Z uwagi na zidentyfikowany problem (błędną segmentację w określonych obszarach skanu), zaproponowano stworzenie dodatkowych dwóch modeli wzdług pozostałych osi skanu (czołowej i poprzecznej), połączono trzy modele w jeden `model łączony`.
+Z uwagi na zidentyfikowany problem (błędną segmentację w określonych obszarach skanu), zaproponowano stworzenie dodatkowych dwóch modeli wzdłuż pozostałych osi skanu (czołowej i poprzecznej), połączono trzy modele w jeden `model łączony`.
 
 Otrzymując następujące wyniki.
 
